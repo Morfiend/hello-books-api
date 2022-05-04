@@ -19,7 +19,7 @@ def create_book():
 def read_all_books():
     title_query = request.args.get("title")
     if title_query:
-        books = Book.query.filter(Book.title.like(f"%{title_query}%"))
+        books = Book.query.filter(Book.title.ilike(f"%{title_query}%"))
     else:
         books = Book.query.all()
 
