@@ -1,7 +1,7 @@
 from app import db
 from app.models.book import Book
 from flask import Blueprint, jsonify, make_response, request
-from .helpers import validate_book
+from ..helpers import validate_book
 
 books_bp = Blueprint("books", __name__, url_prefix="/books")
 
