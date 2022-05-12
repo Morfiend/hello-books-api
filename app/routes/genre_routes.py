@@ -40,7 +40,7 @@ def create_book(genre_id):
         title=request_body["title"],
         description=request_body["description"],
         author_id=request_body["author_id"],
-        genres=genre
+        genres=[genre]
     )
 
     db.session.add(new_book)
