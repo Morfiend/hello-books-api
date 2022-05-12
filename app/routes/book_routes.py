@@ -26,7 +26,7 @@ def read_all_books():
 
     books_response = []
     for book in books:
-        books_response.append(book.to_json())
+        books_response.append(book.to_dict())
 
     return jsonify(books_response), 200
 
@@ -34,7 +34,7 @@ def read_all_books():
 def read_one_book(book_id):
     book = validate_book(book_id)
 
-    return jsonify(book.to_json()), 200
+    return jsonify(book.to_dict()), 200
 
 @books_bp.route("/<book_id>", methods=["PUT"])
 def update_book(book_id):

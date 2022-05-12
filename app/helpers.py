@@ -1,6 +1,7 @@
 from flask import abort, make_response
 from .models.book import Book
 from .models.author import Author
+from .models.genre import Genre
 
 def validate_book(book_id):
     try:
@@ -27,3 +28,16 @@ def validate_author(author_id):
         abort(make_response({"message":f"author {author_id} not found"}, 404))
 
     return author
+
+def validate_genre(genre_id):
+    try:
+        genre_id = int(genre_id)
+    except:
+        abort(make_response({"message":f"Genre {genre_id} invalid"}, 400))
+
+    genre = Genre.query.get(genre_id)
+
+    if not genre:
+        abort(make_response({"message":f"Genre {genre_id} not found"}, 404))
+
+    return genre
